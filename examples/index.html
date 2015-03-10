@@ -1,0 +1,48 @@
+
+<html ng-app="app">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <script src="angular.js"></script>
+    <script src="angular-animate.js"></script>
+    <script src="app.js"></script>
+</head>
+<body ng-controller="MainController">
+
+<div class="row">
+    <h1>Search for a professor...</h1>
+    <input type="text" placeholder="Enter a professor's name..." ng-model="searchName">
+    <button style="width: 100%" ng-click="search()">Find courses!</button>
+</div>
+
+<div class="row">
+
+	<p ng-show="courses.length == 0"> No results to be displayed. Run another search. </p>
+
+
+	<table style="margin-top: 30px;" ng-show="courses.length > 1">
+	  <thead>
+	    <tr>
+	      <th width="50">Course Code</th>
+	      <th>Instructor</th>
+	      <th width="150">Days</th>
+	      <th width="150">Building</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr ng-repeat="course in courses" class="repeated-item" style="transition-delay: {{$index * 10}}ms" >
+	      <td>{{course.code}}</td>
+	      <td>{{course.instructor}}</td>
+	      <td>{{course.days | dayFormatter}}</td>
+	      <td>{{course.building}}</td>
+	    </tr>
+	  </tbody>
+	</table>
+
+
+</div>
+
+
+
+
+</body>
+</html>
