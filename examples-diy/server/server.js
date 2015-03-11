@@ -12,9 +12,7 @@ fs.readFile('export.json', 'utf8', function (err,data) {
 		console.log(err);
 	}
 
-	courseData = JSON.parse(data);
-	console.log("Course data loaded");
-
+	// Load course data
 
 	// Put a friendly message on the terminal
 	console.log("Server running at http://127.0.0.1:3333/");
@@ -34,16 +32,7 @@ var server = http.createServer(function (request, response) {
 	response.setHeader('Access-Control-Allow-Headers', '*');
 
 
-	var queryObject = url.parse(request.url,true).query;
-	var prof = queryObject['prof'];
-	
-
-	var coursesWithProf = courseData.filter(function(course) {		
-		return course.instructor.indexOf(prof) > -1;
-	});
-
-	response.setHeader('Content-Type', 'application/json');
-  	response.end(JSON.stringify(coursesWithProf));
+	// Add some code to actually send stuff
   	
 });
 
